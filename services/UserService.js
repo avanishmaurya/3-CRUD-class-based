@@ -12,7 +12,8 @@ class UserService {
     }
 
     getUserById(id) {
-        return this.userRepository.findById(id);
+        const user = this.userRepository.findById(id);
+        console.log("a user ", user)
     }
 
     updateUser(id, data) {

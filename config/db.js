@@ -1,8 +1,9 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('database_name', 'username', 'password', {
+const sequelize = new Sequelize('crud_class_based', 'postgres', 'avanish123', {
     host: 'localhost',
     dialect: 'postgres',
+    logging: console.log,
 });
 
 sequelize.authenticate()

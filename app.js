@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const sequelize = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(morgan('dev'));
 
 // Routes
 app.use('/users', userRoutes);
