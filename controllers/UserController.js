@@ -13,6 +13,7 @@ class UserController {
             const user = await this.userService.createUser(req.body);
             res.status(201).json(user);
         } catch (err) {
+            console.log(err);
             res.status(500).json({ error: err.message });
         }
     }
@@ -22,6 +23,7 @@ class UserController {
             const users = await this.userService.getAllUsers();
             res.json(users);
         } catch (err) {
+            console.log(err);
             res.status(500).json({ error: err.message });
         }
     }
@@ -32,6 +34,7 @@ class UserController {
             if (!user) return res.status(404).json({ message: 'User not found' });
             res.json(user);
         } catch (err) {
+            console.log(err);
             res.status(500).json({ error: err.message });
         }
     }
@@ -42,6 +45,7 @@ class UserController {
             if (!user) return res.status(404).json({ message: 'User not found' });
             res.json(user);
         } catch (err) {
+            console.log(err);
             res.status(500).json({ error: err.message });
         }
     }
@@ -52,6 +56,7 @@ class UserController {
             if (!user) return res.status(404).json({ message: 'User not found' });
             res.json({ message: 'User deleted' });
         } catch (err) {
+            console.log(err);
             res.status(500).json({ error: err.message });
         }
     }

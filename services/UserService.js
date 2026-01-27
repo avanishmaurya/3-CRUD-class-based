@@ -3,25 +3,42 @@ class UserService {
         this.userRepository = userRepository;
     }
 
-    createUser(data) {
-        return this.userRepository.create(data);
+    async createUser(data) {
+        return await this.userRepository.create(data);
     }
 
-    getAllUsers() {
-        return this.userRepository.findAll();
+    async getAllUsers() {
+        return await this.userRepository.findAll();
     }
 
-    getUserById(id) {
-        const user = this.userRepository.findById(id);
-        console.log("a user ", user)
+    async getUserById(id) {
+        const user = await this.userRepository.findById(id);
+
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        return user;
     }
 
-    updateUser(id, data) {
-        return this.userRepository.update(id, data);
+    async updateUser(id, data) {
+        const updatedUser = await this.userRepository.update(id, data);
+
+        if (!updatedUser) {
+            throw new Error('User not found');
+        }
+
+        return updatedUser;
     }
 
-    deleteUser(id) {
-        return this.userRepository.delete(id);
+    async deleteUser(id) {
+        const deletedUser = await this.userRepository.delete(id);
+
+        if (!deletedUser) {
+            throw new Error('User not found');
+        }
+
+        return deletedUser;
     }
 }
 
